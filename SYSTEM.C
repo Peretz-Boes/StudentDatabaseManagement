@@ -40,7 +40,7 @@ int YEAR;
 struct ADDRESS A;
 };
 
-int main(){
+void main(){
 int gd=DETECT,gm;
 initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 login_window();
