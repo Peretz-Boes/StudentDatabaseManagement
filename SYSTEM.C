@@ -14,9 +14,11 @@ void add_window();
 void add_student_record();
 void display_data();
 void delete_student_record();
+void search_student_record();
 void modify_student_record();
 void list_records();
 void backup_database();
+void progress();
 void exit_system();
 struct ADDRESS{
 char STREET[25];
@@ -28,7 +30,7 @@ char PIN[10];
 struct STUDENT{
 int ROLL_NO;
 float MARKS;
-char MOBILE_NO[12];
+char MOBILE_NUMBER[12];
 char F_NAME[20];
 char L_NAME[20];
 char COURSE_NAME[10];
@@ -417,7 +419,7 @@ printf("Enter address(Street)");
 scanf(" %s",S.A.STREET);
 gotoxu(10,18);
 printf("Enter landmark");
-scanf(" %s",S.A.IM):
+scanf(" %s",S.A.IM);
 gotoxy(10,19);
 printf("Enter city");
 scanf(" %s",S.A.CITY);
@@ -436,7 +438,7 @@ setcolor(3);
 setfillstyle(1,8);
 rectangle(460,249,140,180);
 rectangle(450,240,148,189);
-rectangle(451,241,3);
+floodfill(451,241,3);
 printf("Do you want to add another record(Yes/No)");
 fflush(stdin);
 INPUT=getch();
@@ -458,8 +460,8 @@ floodfill(579,418,3);
 }
 void search_student_record(){
 struct STUDENT S;
+int gd=DETECT,gm,RNO;
 FILE *fp;
-int gd=DETECT,gm;
 initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 cleardevice();
 draw_screen();
@@ -470,7 +472,7 @@ rectangle(450,240,148,189);
 floodfill(451,241,3);
 gotoxy(20,14);
 printf("Enter roll number");
-scanf(" %d",&RNO);
+scanf(" %d",&S.ROLL_NO);
 fp=fopen("C:\Database.dat","rb+");
 if(fp==NULL){
 cleardevice();
@@ -479,7 +481,7 @@ printf("File opening error");
 delay(1500);
 }
 while(fread(&S,sizeof(S),1,fp)==1){
-if(strcmp(&S.ROLL_NUMBER,&RNO)==0){
+if(strcmp(&S.ROLL_NO,&RNO)==0){
 cleardevice();
 initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 draw_screen();
@@ -492,6 +494,13 @@ break;
 }
 }
 void delete_student_record(){
+int RNO;
+FILE *fp,*fp1;
+struct STUDENT S;
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"C:\\turboc3\\bgi");
+cleardevice();
+draw_screen();
 setcolor(3);
 setfillstyle(1,8);
 rectangle(460,249,140,180);
@@ -504,7 +513,7 @@ fp=fopen("C:\\Database.dat","rb+");
 fp=fopen("C:\\Temp.dat","wb+");
 rewind(fp);
 while(fread(&S,sizeof(S),1,fp)==1){
-if(strcmp(&S.ROLL_NUMBER,&RNO!=0){
+if(strcmp(&S.ROLL_NO,&RNO)!=0){
 fwrite(&S,sizeof(S),1,fp1);
 }
 }
@@ -572,7 +581,7 @@ printf("Marks of student");
 scanf("%f",&S.MARKS);
 gotoxy(10,16);
 printf("Mobile number");
-scanf("%s",S.MOBILE_NO);
+scanf("%s",S.MOBILE_NUMBER);
 gotoxy(10,17);
 printf("Address[Street]");
 scanf("%s",S.A.STREET);
@@ -614,7 +623,7 @@ gotoxy(8,4);
 printf("Name of student");
 line(292,40,292,449);
 gotoxy(38,4);
-printf("Admission date")
+printf("Admission date");
 line(380,40,380,449);
 gotoxy(49,4);
 printf("Course");
@@ -641,7 +650,7 @@ printf("%s",S.COURSE_NAME);
 gotoxy(58,Y);
 printf("%s",S.FEES);
 gotoxy(66,Y);
-printf("%s",S.MOBILE_NO);
+printf("%s",S.MOBILE_NUMBER);
 Y++;
 }
 
@@ -682,7 +691,7 @@ fclose(fp);
 void progress()
 {
 int gd=DETECT,gm,i;
-initgraph(&gd,&gm,"C:\\turboc3\\bgi")
+initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 for( i=130;i<=495;i++)
 {
 draw_screen();
