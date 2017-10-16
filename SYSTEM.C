@@ -50,6 +50,7 @@ password_input();
 start:
 cleardevice();
 draw_screen();
+initialize_mouse();
 setcolor(3);
 setfillstyle(1,8);
 rectangle(390,55,200,88);
@@ -353,6 +354,19 @@ void get_mouse(){
 i.x.ax=3;
 int86(0x33,&i,&o);
 }
+void add_window(){
+setcolor(3);
+settextstyle(12,0,1);
+outtextxy(110,50,"Enter student database manually");
+setcolor(3);
+setfillstyle(1,8);
+rectangle(570,400,60,100);
+rectangle(571,401,59,99);
+setcolor(3);
+rectangle(590,420,40,80);
+rectangle(591,421,39,79);
+floodfill(579,418,3);
+}
 void add_student_record(){
 char INPUT;
 struct STUDENT S;
@@ -417,7 +431,7 @@ printf("Enter mobile number");
 scanf(" %s",&S.MOBILE_NUMBER);
 printf("Enter address(Street)");
 scanf(" %s",S.A.STREET);
-gotoxu(10,18);
+gotoxy(10,18);
 printf("Enter landmark");
 scanf(" %s",S.A.IM);
 gotoxy(10,19);
