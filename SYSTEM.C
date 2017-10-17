@@ -490,7 +490,7 @@ floodfill(451,241,3);
 gotoxy(20,14);
 printf("Enter roll number");
 scanf(" %d",&S.ROLL_NO);
-fp=fopen("C:\Database.dat","rb+");
+fp=fopen("C:\Database.dat","r");
 if(fp==NULL){
 cleardevice();
 gotoxy(25,10);
@@ -522,12 +522,12 @@ setcolor(3);
 setfillstyle(1,8);
 rectangle(460,249,140,180);
 rectangle(450,240,148,189);
-floodfill(451,242,3);
+floodfill(451,241,3);
 gotoxy(20,14);
 printf("Enter roll number");
-scanf("%s",&RNO);
-fp=fopen("C:\\Database.dat","rb+");
-fp=fopen("C:\\Temp.dat","wb+");
+scanf("%d",&RNO);
+fp=fopen("C:\\Database.dat","r");
+fp=fopen("C:\\Temp.dat","w");
 rewind(fp);
 while(fread(&S,sizeof(S),1,fp)==1){
 if(strcmp(&S.ROLL_NO,&RNO)!=0){
@@ -560,7 +560,7 @@ initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 cleardevice();
 draw_screen();
 add_window();
-fp=fopen("C:\\database.dat","rb+");
+fp=fopen("C:\\database.dat","r");
 rewind(fp);
 while(fread(&S,sizeof(S),1,fp)==1){
 if(strcmp(S.F_NAME,NAME)==0){
@@ -650,7 +650,7 @@ printf("Fees");
 line(500,40,500,449);
 gotoxy(65,4);
 printf("Mobile no.");
-fp=fopen("C:\\Database.dat","rb+");
+fp=fopen("C:\\Database.dat","r");
 rewind(fp);
 while(fread(&S,sizeof(S),1,fp)==1)
 {
@@ -677,7 +677,7 @@ fclose(fp);
 void backup_database(){
 struct STUDENT S;
 FILE *fp,*backup;
-fp=fopen("C:\\Database.dat","rb+");
+fp=fopen("C:\\Database.dat","r");
 if(fp==NULL)
 {
 cleardevice();
@@ -687,7 +687,7 @@ printf("File opening error");
 delay(2000);
 exit(1);
 }
-backup=fopen("E:\\Backup.dat","wb+");
+backup=fopen("E:\\Backup.dat","w");
 if(backup==NULL)
 {
 cleardevice();
@@ -733,3 +733,4 @@ printf("Exiting the system please wait");
 delay(1000);
 exit(0);
 }
+
