@@ -110,32 +110,32 @@ add_student_record();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<140&&o.x.dx>100){
 search_student_record();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<185&&o.x.dx>146){
 delete_student_record();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<234&&o.x.dx>194){
 modify_student_record();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<282&&o.x.dx>242){
 list_records();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<330&&o.x.dx>290){
 backup_database();
 delay(500);
 goto start;
 }
-if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<94&&o.x.dx>50){
+if(o.x.bx==1&&o.x.cx<395&&o.x.cx>195&&o.x.dx<377&&o.x.dx>340){
 exit_system();
 delay(500);
 goto start;
@@ -368,7 +368,7 @@ rectangle(591,421,39,79);
 floodfill(579,418,3);
 }
 void add_student_record(){
-char INPUT;
+char INPUT ;
 struct STUDENT S;
 int gd=DETECT,gm;
 FILE *fp;
@@ -376,17 +376,19 @@ initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 cleardevice();
 draw_screen();
 add_window();
-fp=fopen("Database.dat","a");
-if(fp==NULL){
+fp=fopen("C:\\Database.dat","a");
+if(fp==NULL)
+{
 clrscr();
-printf("File opening error\n");
+printf("File opening error");
 delay(1000);
 exit(1);
 }
 fseek(fp,0,SEEK_END);
 fflush(stdin);
 INPUT='Y';
-while(INPUT=='Y'||INPUT=='y'){
+while(INPUT=='Y'||INPUT=='y')
+{
 int gd=DETECT,gm;
 initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 cleardevice();
@@ -395,54 +397,55 @@ add_window();
 fflush(stdin);
 gotoxy(10,8);
 printf("Enter roll number of student:");
-scanf(" %d",&S.ROLL_NO);
+scanf("%d",&S.ROLL_NO);
 gotoxy(10,9);
 printf("Enter first name");
-scanf(" %s",&S.F_NAME);
+scanf(" %s",S.F_NAME);
 gotoxy(10,10);
 printf("Enter last name");
-scanf(" %s",&S.L_NAME);
+scanf("%s",S.L_NAME);
 gotoxy(10,11);
 printf("Enter gender male or female");
-scanf(" %s",&S.GENDER);
+scanf("%s",S.GENDER);
 gotoxy(10,12);
 printf("Enter course name");
-scanf(" %s",&S.COURSE_NAME);
+scanf("%s",S.COURSE_NAME);
 gotoxy(10,13);
 printf("Enter admission date in dd/mm/yy format");
 gotoxy(49,13);
-scanf(" %d",&S.DAY);
+scanf("%d",&S.DAY);
 gotoxy(51,13);
 printf("/");
 gotoxy(53,13);
-scanf(" %d",&S.MONTH);
+scanf("%d",&S.MONTH);
 gotoxy(55,13);
 printf("/");
 gotoxy(56,13);
-scanf(" %d",&S.YEAR);
+scanf("%d",&S.YEAR);
 gotoxy(10,14);
 printf("Enter fees status(Paid or due)");
-scanf(" %s",&S.FEES);
+scanf("%s",S.FEES);
 gotoxy(10,15);
 printf("Marks of student");
-scanf(" %f",&S.MARKS);
+scanf("%f",&S.MARKS);
 gotoxy(10,16);
 printf("Enter mobile number");
-scanf(" %s",&S.MOBILE_NUMBER);
+scanf("%s",S.MOBILE_NUMBER);
+gotoxy(10,17);
 printf("Enter address(Street)");
-scanf(" %s",S.A.STREET);
+scanf("%s",S.A.STREET);
 gotoxy(10,18);
 printf("Enter landmark");
-scanf(" %s",S.A.IM);
+scanf("%s",S.A.IM);
 gotoxy(10,19);
 printf("Enter city");
-scanf(" %s",S.A.CITY);
+scanf("%s",S.A.CITY);
 gotoxy(10,20);
 printf("Enter pin");
-scanf(" %s",S.A.PIN);
+scanf("%s",S.A.PIN);
 gotoxy(10,21);
 printf("Enter country");
-scanf(" %s",S.A.COUNTRY);
+scanf("%s",S.A.COUNTRY);
 fwrite(&S,sizeof(S),1,fp);
 initgraph(&gd,&gm,"C:\\turboc3\\bgi");
 cleardevice();
@@ -462,7 +465,7 @@ fclose(fp);
 void display_data(){
 setcolor(3);
 settextstyle(12,0,1);
-outtextxy(145,50,"|||***** _DETAILS OF STUDENT_ *****|||");
+outtextxy(145,50,"|||***** _details of student_ *****|||");
 setcolor(3);
 setfillstyle(1,8);
 rectangle(570,400,60,100);
